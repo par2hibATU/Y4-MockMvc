@@ -13,8 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    //Adding a comment
-    //Adding another comment
+    //Use this when writing to a db
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
