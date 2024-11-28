@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,15 +21,20 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
+    public List<ProductDTO> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        List<ProductDTO> productDTOs = new ArrayList<>();
+        for (Product product : products) {
+            productDTOs.add(ProductMapper.toDTO(product));
+        }
+        return productDTOs;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
-            return new ResponseEntity<>(product.get(), HttpStatus.OK);
+            return new ResponseEntity<>(ProductMapper.toDTO(product.get()), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
