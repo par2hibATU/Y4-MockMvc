@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-    //Use this when sending
-
+    private Long id;
     private String name;
     private String description;
     private double price;
+
 }
