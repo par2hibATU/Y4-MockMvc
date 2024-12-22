@@ -36,5 +36,5 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker tag product-pipe-image ${{secrets.DOCKER_USERNAME}}/product_pipe_image:latest \
-          && docker push ${{secrets.DOCKER_USERNAME}}/product_pipe_image:latest
+          docker tag product-pipe-image ${{secrets.DOCKER_USERNAME}}/product_pipe_image:latest
+          docker push ${{secrets.DOCKER_USERNAME}}/product_pipe_image:latest
