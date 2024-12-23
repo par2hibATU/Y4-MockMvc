@@ -59,7 +59,7 @@ class ProductControllerTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonValue = objectMapper.writeValueAsString(p);
-        mockMvc.perform(post("").contentType("application/json").content(jsonValue))
+        mockMvc.perform(post("/products").contentType("application/json").content(jsonValue))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("Prod A"));
     }
